@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Film{% endblock %}
+
+{% block body %}
+    <h1>Film</h1>
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th scope="row">TitreFilm</th>
+                <td>{{ film.titreFilm }}</td>
+            </tr>
+            <tr>
+                <th>AnneeFilm</th>
+                <td>{{ film.anneeFilm }}</td>
+            </tr>
+            <tr>
+                <th>DureeFilm</th>
+                <td>{{ film.dureeFilm }}</td>
+            </tr>
+            <tr>
+                <th>Resume</th>
+                <td>{{ film.resume }}</td>
+            </tr>
+            <tr>
+                <th>UrlImage</th>
+                <td>{{ film.urlImage }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{#{{ film.note }}/5 #}
+
+                {% for i in 1..film.note  %}
+                  <i class="fas fa-grin-stars fa-2x plein" style="color:orange;"></i>
+                {% endfor %}
+                </td>
+
+
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('film_index') }}">back to list</a>
+
+    <a href="{{ path('film_edit', {'idFilm': film.idFilm}) }}">edit</a>
+
+    {{ include('film/_delete_form.html.twig') }}
+{% endblock %}

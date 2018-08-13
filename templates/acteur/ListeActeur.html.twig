@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% form_theme commentForm 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+
+<article>
+  <h2>{{ article.title}}</h2>
+  <div class="metadata">Ecrit le {{ article.createdAt | date ('d/m/Y') }} à {{ article.createdAt | date ('H:i') }} dans la catégorie {{ article.category.title }}</div>
+  <div class="content">
+    <img src="{{ article.image }}" alt="">
+    {{ article.content | raw }}
+</article>
+
+{# on boucle pour afficher chaque commentaire de l'article #}
+<section id="commentaires">
+  <hr>
+  <h1> {{ article.comments | length }} Commentaires :</h1>
+  {% for comment in article.comments %}
+  <hr>
+  <div class="comment">
+    <div class="row">
+      <div class="col-3">
+         {{comment.author}} (<small>{{comment.createdAt |  date('d/m/Y à H:i')}}</small>)
+      </div>
+      <div class="col">
+         {{comment.contenu | raw}}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+<hr>
+
+</section>
+
+
+{% endblock %}

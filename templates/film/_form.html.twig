@@ -1,0 +1,11 @@
+
+{# on fait appel au template bootstrap pour le form #}
+
+
+{% block body %}
+{{ form_start(form) }}
+    {{ form_row(form, {'attr': {'class': 'col-sm-20'}}) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+{% endblock %}
